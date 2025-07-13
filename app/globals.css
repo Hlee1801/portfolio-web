@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --line-color: #e5e7eb;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  --line-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Light mode - Beige theme */
+body {
+  background-color: #f7f5f3;
+  color: #4a4a4a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode - Keep original */
+html.dark body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+.borderBlack {
+  @apply border border-black/10;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1ede8;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4a574;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c49660;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Animation for skill icons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.skill-icon:hover {
+  animation: float 1s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(to right, #d4a574, #b8956a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.dark .gradient-text {
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Skills carousel animation */
+@keyframes scroll-skills {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-skills {
+  animation: scroll-skills 30s linear infinite;
+}
+
+.animate-scroll-skills:hover {
+  animation-play-state: paused;
+}
+
+/* Skill icon hover effects */
+.skill-icon-hover {
+  transition: all 0.3s ease;
+}
+
+.skill-icon-hover:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+html.dark .skill-icon-hover:hover {
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scrolling for projects */
+.projects-container {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.project-item {
+  scroll-snap-align: start;
+}
+
+/* Custom scrollbar for projects */
+.projects-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.projects-scrollbar::-webkit-scrollbar-track {
+  background: rgba(212, 165, 116, 0.3);
+  border-radius: 2px;
+}
+
+html.dark .projects-scrollbar::-webkit-scrollbar-track {
+  background: rgba(75, 85, 99, 0.3);
+  border-radius: 2px;
+}
+
+.projects-scrollbar::-webkit-scrollbar-thumb {
+  background: #d4a574;
+  border-radius: 2px;
+}
+
+html.dark .projects-scrollbar::-webkit-scrollbar-thumb {
+  background: #14b8a6;
+  border-radius: 2px;
+}
+
+.projects-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c49660;
+}
+
+html.dark .projects-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0d9488;
+}
+
+/* Vertical Timeline Customization */
+.vertical-timeline {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.vertical-timeline::before {
+  background: var(--line-color);
+  width: 6px;
+}
+
+.vertical-timeline-element {
+  margin: 2rem 0;
+}
+
+.vertical-timeline-element-content {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.vertical-timeline-element-date {
+  color: #8b7355;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+html.dark .vertical-timeline-element-date {
+  color: #9ca3af;
+}
+
+/* Responsive timeline adjustments */
+@media (max-width: 1169px) {
+  .vertical-timeline-element-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .vertical-timeline-element-date {
+    position: static;
+    margin-top: 1rem;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1170px) {
+  .vertical-timeline-element-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
